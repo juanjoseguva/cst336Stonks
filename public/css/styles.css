@@ -1,0 +1,158 @@
+body {
+  background-image: linear-gradient(to right top, #0f39a9, #005abe, #0077c8, #0091cc, #00a9cd);
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+  color: lightgoldenrodyellow;
+  padding:10px;
+  text-align:center;
+  height:100%;
+}
+
+button {
+  background-color: #0f39a9;
+  border: 1px solid lightgray;
+  color: white;
+  width: 130px;
+  font-size: 16px;
+  border-radius: 5%;
+}
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+button:hover span {
+  padding-right: 15px;
+}
+
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+button:disabled {
+  background-color: lightslategray;
+}
+
+#indexContainer {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  gap: 5px;
+  align-items:center;
+  justify-content:center;
+}
+.item {
+  justify-self: center;
+}
+.item2{
+  justify-content: center;
+}
+#stonkGuy {
+  display:flex;
+  justify-content:center;
+  justify-self:stretch;
+}
+#stonkGuyImg {
+  border-radius:5%;
+  width: 100%;
+}
+#logos img{
+  border-radius: 5%;
+  width: 150%;
+}
+
+#stockSearchDisplay {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.stockItem1{
+  justify-self:right;
+}
+.stockItem2{
+  justify-self:left;
+}
+#charts {
+  margin: 0 auto; 
+  display: flex; 
+  justify-content: center; 
+}
+
+#sharesChart-container,
+#valueChart-container {
+  width: 50%; 
+}
+h1 {
+  font-family: 'Tangerine', cursive;
+  text-align:center;
+  font-size: 5em;
+}
+h2{
+  font-family: 'Tangerine', cursive;
+  font-size: 3em;
+  text-align:center;
+  padding:0px;
+}
+h3{
+  font-family: 'Prata', serif;
+  text-align:center;
+  padding:0px;
+  padding-right: 10px;
+}
+h6{
+  font-family: 'Prata', serif;
+  text-align:center;
+  padding-right: 10px;
+}
+#signup{
+  display:grid;
+  grid-template-columns: 30% 30%;
+  text-align:right;
+  justify-content:center;
+}
+p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4em;
+}
+footer {
+  font-family: 'Prata', serif;
+  text-align:center;
+}
+
+.chart-container {
+  max-width: 400px; 
+  margin: 0 auto; 
+}
+
+#userPortfolioNews a {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-content:center;
+  align-items:center;
+  text-decoration: none;
+  color:white;
+  text-align:center;
+  padding:5px;
+}
+
+#userPortfolioNews a img{
+  border-radius:5%;
+  width:80%;
+}
+
+hr {
+  border-color:darkblue;
+}

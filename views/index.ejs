@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs")%>
+<div id="indexContainer"> 
+  <div class="item"><h1>Stonk Exchange</h1></div>
+  <div class="item2">
+    <form >
+      <input type="text" name="uName" placeholder="Username" size="14">
+      <input type="password" name="password" placeholder="Password" size="14">
+      <button 
+        formmethod="post" formaction="/login"><span>Login</span>
+      </button>
+      <button
+        formmethod="get" formaction="/signup"><span>Sign Up</span>
+      </button>
+      <% if (typeof message != "undefined"){ %>
+  		   <h6><%=message%></h6>
+      <% } %>
+    </form>
+  </div>
+</div>
+<div id="stonkGuy">
+  <figure>
+    <img src="/img/stonks.jpg" alt="Stonk Guy" id="stonkGuyImg">
+    <figcaption><em>Good at business.</em></figcaption>
+  </figure>
+</div>
+<h2>"Line goes up!"</h2>
+<h3>-<strong> Stonk Guy</strong></h3> 
+<p> Welcome to the highest rated online stock broker. Stonk Exchange guarantees a significant difference in the value of your personal portfolio after just one year of holding to the moon! Our personalized randomized globalized stock picker can make suggestions for rounding out your personal portfolio, all for a small commission fee of 50%! It's a great deal if you ask us! </p>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/if-2M3K1tqk"></iframe>
+<%- include("partials/footer.ejs")%>
+  

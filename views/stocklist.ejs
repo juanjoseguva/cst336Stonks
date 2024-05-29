@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs")%>
+<%- include("partials/nav.ejs")%><br>
+<div id="stockSearchDisplay">
+  <% for(let stock of searchResults){ %>
+    <div id="<%=stock.symbol%>" class="stockItem1">
+    Symbol: <%=stock.symbol%><br>
+    Description: <%=stock.description%><br>
+    Price at open: <%=stock.openPrice%><br>
+    Current price: <%=stock.currentPrice%><br>
+    <!-- <a href="/purchase?sym=<%=stock.symbol%>&open=<%=stock.openPrice%>&current=<%=stock.currentPrice%>"> -->
+    <form method="get" action="/purchase"> 
+      <input type="hidden" name="sym" value="<%=stock.symbol%>"> 
+      <input type="hidden" name="open" value="<%=stock.openPrice%>"> 
+      <input type="hidden" name="current" value="<%=stock.currentPrice%>">
+      <button><span>Buy</span></button>
+    </form>
+    </div>
+    <div id="logos" class="stockItem2">
+      <figure id="<%=stock.symbol%>site">
+        <a href="<%=stock.website%>">
+          <img src="<%=stock.logo%>" alt="<%=stock.symbol%> Website">
+        </a>
+        <figcaption><em>Website</em></figcaption>
+      </figure>
+    </div>
+  <% } %>
+</div>  
+<%- include("partials/footer.ejs")%>
+  

@@ -1,0 +1,27 @@
+<%- include("partials/header.ejs")%>
+<%- include("partials/nav.ejs")%><br>
+<% if (typeof searchMessage != "undefined"){ %>
+  		   <h3><%=searchMessage%></h3>
+ <% } %>
+<br>Check out these news stories relevant to your portfolio<br><br>
+<div id="userPortfolioNews">
+  <%console.log(stories);%>
+  <% for (let stock of stories) { %>
+    <% let counter = 0;%>
+    <% for (let story of stock.stories) { %>
+      <% if(counter<3) { %>
+        <% counter++; %>
+        <a href="<%=story.url%>">
+          <div>
+            <img src="<%=story.image%>" alt="<%=stock.ticker%>-related story by <%=story.source%>">
+          </div>
+          <div>
+            <h4><%=story.headline%></h4>
+            <p><%=story.summary%></p>
+          </div>
+        </a><hr>
+      <% } else {break;} %>
+    <% } %>
+  <% } %>
+</div>
+<%- include("partials/footer.ejs")%>

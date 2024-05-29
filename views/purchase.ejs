@@ -1,0 +1,17 @@
+<%- include("partials/header.ejs")%>
+<%- include("partials/nav.ejs")%><br>
+
+  <h1>Purchase <%=stock%></h1>
+  <form method="post" action="/purchase">
+    Current Price: $<%=currentPrice%><br>
+    # of shares to purchase:
+    <input type="number" name="quantity" id="stockAmount">
+    <input type="hidden" id="stockPrice" value="<%=currentPrice%>">
+    <input type="hidden" name="ticker" value="<%=stock%>">
+    <div id="priceMessage"></div>
+    <button><span>Purchase</span></button>
+  </form>
+  <script src="/js/purchase.js"></script>
+  
+<%- include("partials/footer.ejs")%>
+  

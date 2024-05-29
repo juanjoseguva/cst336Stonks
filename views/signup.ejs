@@ -1,0 +1,35 @@
+<%- include("partials/header.ejs")%>
+
+<form method="POST" id="signup" action="/signup">
+  First Name:
+  <input type="text" name="fName" id="fName"><br>
+  Last Name:
+  <input type="text" name="lName" id="lName"><br>
+  Birthdate:
+  <input type="date" name="bday" id="bday"><br>
+  Sex:
+  <input type="radio" name="sex" value="M" id="male">
+  <label for="male">Male</label>
+  
+  <input type="radio" name="sex" value="F" id="female">
+  <label for="female">Female</label>
+  
+  <input type="radio" name="sex" value="X" id="other">
+  <label for="other">Other/Non-binary</label>
+  Username:
+  <input type="text" name="uName" value="<%=newUser[0]%>" id="uName"><br>
+  Password:
+  <input type="password" name="password" value="<%=newUser[1]%>" id="password"><br>
+  Re-type password:
+  <input type="password" name="repassword" id="repassword"><br>
+  Credit Card (16 digits):
+  <input type="text" name="cCard"><br>
+  <button id="subButton" disabled><span>Sign Up</span></button>
+</form>
+<br>
+<div id="feedback"></div>
+<% if (typeof message != "undefined"){ %>
+  		   <h3><%=message%></h3>
+ <% } %>
+<script src="/js/signup.js"></script>
+<%- include("partials/footer.ejs")%>

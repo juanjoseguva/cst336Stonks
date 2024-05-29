@@ -1,0 +1,118 @@
+<%- include("partials/header.ejs") %>
+<%- include("partials/nav.ejs")%><br>
+
+<h1>Portfolio</h1>
+
+<% if (stocks.length > 0) { %>
+  <ul>
+    <% for (let stock of stocks) { %>
+      <li><%= stock.ticker %> : <%= stock.totalAmount %> shares - $<%=stock.totalVal%></li>
+    <% } %>
+  </ul>
+<% } else { %>
+  <p>No stocks owned yet.</p>
+<% } %>
+  <p>Total Amount Invested: $<%= totalVals.toFixed(2) %></p>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div id="charts">
+  <div id="sharesChart-container">
+    <canvas id="portfolioSharesChart"></canvas>
+  </div>
+  
+  <div id="valueChart-container">
+    <canvas id="portfolioValueChart"></canvas>
+  </div>
+</div>
+
+<script>
+  Chart.defaults.color = '#FFF';
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('portfolioSharesChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: [<%- stocks.map(stock => `"${stock.ticker}"`).join(",") %>],
+        datasets: [{
+          label: 'Percent of shares purchased',
+          data: [<%- stocks.map(stock => stock.percentage.toFixed(2)).join(",") %>],
+          backgroundColor: generateGradientColors(<%- stocks.length %>),
+        }]
+      },
+      options: {
+        responsive: true, 
+        maintainAspectRatio: true, 
+        title: {
+          display: true,
+          text: 'Percent Contribution to Total',
+          color: '#FFFFFF'
+        },
+        legend: {
+          labels: {
+            fontColor: '#FFFFFF'
+          }
+        },
+        plugins: {
+          datalabels: {
+            color: '#FFFFFF'
+          }
+        }
+      }
+    });
+
+    const ctx2 = document.getElementById('portfolioValueChart').getContext('2d');
+    new Chart(ctx2, {
+      type: 'pie',
+      data: {
+        labels: [<%- stocks.map(stock => `"${stock.ticker}"`).join(",") %>],
+        datasets: [{
+          label: 'Percent of total investment',
+          data: [<%- stocks.map(stock => stock.percentageCurrency.toFixed(2)).join(",") %>],
+          backgroundColor: generateGradientColors(<%- stocks.length %>),
+        }]
+      },
+      options: {
+        responsive: true, 
+        maintainAspectRatio: true, 
+        title: {
+          display: true,
+          text: 'Percent Contribution to Total',
+          color: '#FFFFFF'
+        },
+        legend: {
+          labels: {
+            fontColor: '#FFFFFF'
+          }
+        },
+        plugins: {
+          datalabels: {
+            color: '#FFFFFF'
+          }
+        }
+      }
+    });
+  });
+
+  function generateGradientColors(numColors) {
+    let colors = [];
+    let startColor = [5, 55, 42]; // Deep green
+    let endColor = [255, 215, 0]; // Gold
+
+    for (let i = 0; i < numColors; i++) {
+      let r = startColor[0] + (endColor[0] - startColor[0]) * (i / (numColors - 1));
+      let g = startColor[1] + (endColor[1] - startColor[1]) * (i / (numColors - 1));
+      let b = startColor[2] + (endColor[2] - startColor[2]) * (i / (numColors - 1));
+      colors.push(`rgba(${r}, ${g}, ${b}, 1)`);
+    }
+
+    return colors;
+  }
+</script>
+
+
+
+
+  <br>
+
+<%- include("partials/footer.ejs") %>
